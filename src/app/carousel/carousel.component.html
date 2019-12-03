@@ -1,0 +1,62 @@
+<div class="container-fluid" style="background-color: black; min-height: 700px;">
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="col-lg-3 py-5">
+            <div>
+                <div class="card border-dark my-2" style="height: 300px;">
+                    <div class="card-header bg-primary text-light font-weight-bold">
+                        Image Infomation
+                    </div>
+                    <div class="card-body">
+                        <!-- <h5 class="card-title">Special title treatment</h5> -->
+                        <p class="card-text">Date: {{date}}</p>
+
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="card border-dark my-2">
+                    <div class="card-header bg-primary text-light font-weight-bold">
+                        Slideshow Controls
+                    </div>
+                    <div class="card-body">
+                        <div class="row my-1 d-flex justify-content-center">
+                            <form class="form-inline">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <input class="form-control border-dark" placeholder="Choose a date" name="dp" [(ngModel)]="datePicker" ngbDatepicker #d="ngbDatepicker" (dateSelect)="selectDate($event)">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-dark calendar" (click)="d.toggle()" type="button"><i class="fa fa-calendar"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="row my-3 d-flex justify-content-center">
+                            <button type="button" (click)="play()" class="btn btn-dark btn-sm w-25 mr-2"> Play </button>
+                            <button type="button" (click)="pause()" class="btn btn-dark btn-sm w-25 ml-2"> Pause </button>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-1"></div>
+
+        <div class="col-lg-6">
+            <ngb-carousel #carousel class="carousel slide" style="height: 100%;">
+                <ng-template ngbSlide *ngFor="let img of images">
+                    <a href="{{img}}" rel="nofollow noopener noreferrer">
+                        <div>
+                            <img [src]="img" alt="#" width="100%">
+                        </div>
+                        <!-- <p>{{img.image}}</p> -->
+                    </a>
+                </ng-template>
+            </ngb-carousel>
+        </div>
+        <div class="col-1"></div>
+
+    </div>
+</div>
